@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Front Desk AI — Never Miss a Property Lead Again</title>
+<meta name="description" content="Front Desk AI captures every property enquiry instantly, organizes leads, and keeps your team on top of follow-ups — even at midnight. Built for Nigerian real estate agencies.">
+<meta property="og:title" content="Front Desk AI — Never Miss a Property Lead Again">
+<meta property="og:description" content="Your AI front desk helps capture property enquiries, organize leads, and keep your team on top of follow-ups.">
+<link rel="icon" type="image/png" href="file_00000000b8dc82109b8fc8eb1354053d.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0B0D;
+    --surface: #16161A;
+    --surface-2: #1D1D22;
+    --gold: #B08D57;
+    --gold-light: #D4B483;
+    --white: #F5F3EE;
+    --muted: #8B8B90;
+    --line: rgba(245,243,238,0.09);
+    --new: #6FCF97;
+    --missed: #C2634B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--gold); color: var(--bg); }
+
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: -0.02em; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11,11,13,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-mark {
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .brand-mark svg { width: 100%; height: 100%; }
+  .brand-name { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; }
+  .nav-cta {
+    font-size: 13px; font-weight: 600;
+    padding: 9px 18px; border-radius: 8px;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+  .btn-primary {
+    background: var(--gold); color: var(--bg);
+    font-weight: 700; font-size: 14px;
+    padding: 14px 24px; border-radius: 9px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary {
+    border: 1px solid var(--line); color: var(--white);
+    font-weight: 600; font-size: 14px;
+    padding: 14px 24px; border-radius: 9px;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,243,238,0.03);
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  .section { padding: 96px 0; }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+  }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 88px 0 100px; position: relative; }
+  .hero::before {
+    content: ""; position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 500px;
+    background: radial-gradient(ellipse, rgba(176,141,87,0.14), transparent 65%);
+    pointer-events: none;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; position: relative; }
+  .hero h1 {
+    font-size: clamp(34px, 4.6vw, 52px);
+    line-height: 1.08; font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .hero h1 .accent { color: var(--gold-light); }
+  .hero .sub { font-size: 16.5px; line-height: 1.65; color: var(--muted); max-width: 46ch; }
+
+  /* ---------- Dashboard mock (signature element, reused 3x) ---------- */
+  .browser-chrome {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 16px 16px 0 0;
+    padding: 11px 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .chrome-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(245,243,238,0.15); }
+  .chrome-url {
+    margin-left: 10px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--muted);
+    background: rgba(245,243,238,0.04);
+    padding: 4px 12px; border-radius: 6px;
+    flex: 1;
+  }
+  .dash {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    padding: 18px;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+  }
+  .dash.standalone { border-top: 1px solid var(--line); border-radius: 16px; }
+  .dash-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .dash-head .title { font-size: 12.5px; font-weight: 600; color: var(--muted); letter-spacing: 0.02em; }
+  .live-pill {
+    display: flex; align-items: center; gap: 6px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--new);
+    background: rgba(111,207,151,0.08); border: 1px solid rgba(111,207,151,0.25);
+    padding: 4px 9px; border-radius: 20px;
+  }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--new); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(111,207,151,0.5); } 70% { box-shadow: 0 0 0 6px rgba(111,207,151,0); } }
+
+  .lead-card {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    opacity: 0; transform: translateY(10px) scale(0.98);
+  }
+  .lead-card.pop { animation: pop-in 0.55s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes pop-in {
+    0% { opacity: 0; transform: translateY(10px) scale(0.98); box-shadow: 0 0 0 0 rgba(176,141,87,0); }
+    55% { opacity: 1; transform: translateY(0) scale(1.01); box-shadow: 0 0 0 6px rgba(176,141,87,0.12); }
+    100% { opacity: 1; transform: translateY(0) scale(1); box-shadow: 0 0 0 0 rgba(176,141,87,0); }
+  }
+  .lead-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .lead-name { font-size: 13.5px; font-weight: 600; }
+  .status-badge {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.04em;
+    padding: 3px 8px; border-radius: 20px;
+  }
+  .status-new { color: var(--new); background: rgba(111,207,151,0.1); }
+  .lead-meta { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .lead-meta .mono { color: var(--gold-light); }
+
+  .dash-ghost { opacity: 0.35; }
+
+  /* ---------- Problem section ---------- */
+  .problem-msg {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    max-width: 420px;
+    margin: 0 auto 48px;
+  }
+  .problem-msg .time { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gold-light); margin-bottom: 8px; }
+  .problem-msg .msg { font-size: 15.5px; color: var(--white); }
+
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .compare-col {
+    border-radius: 14px; padding: 22px;
+    border: 1px solid var(--line);
+  }
+  .compare-col.bad { background: rgba(194,99,75,0.05); }
+  .compare-col.good { background: rgba(176,141,87,0.05); }
+  .compare-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .compare-label.bad-label { color: var(--missed); }
+  .compare-label.good-label { color: var(--gold-light); }
+  .flow-step { display: flex; align-items: center; gap: 10px; font-size: 13.5px; padding: 9px 0; color: var(--muted); }
+  .flow-step .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .bad .flow-step .dot { background: var(--missed); }
+  .good .flow-step .dot { background: var(--gold); }
+  .flow-step.final { color: var(--white); font-weight: 600; }
+  .flow-arrow { color: var(--muted); font-size: 11px; padding-left: 3px; }
+
+  /* ---------- Product section ---------- */
+  .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .chat-mock {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px;
+  }
+  .chat-bubble { max-width: 84%; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; line-height: 1.5; margin-bottom: 9px; }
+  .chat-in { background: var(--surface-2); color: var(--white); border-bottom-left-radius: 3px; }
+  .chat-out { background: var(--gold); color: var(--bg); font-weight: 500; margin-left: auto; border-bottom-right-radius: 3px; }
+
+  /* ---------- 4-step system ---------- */
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 20px; }
+  .steps-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 20px;
+  }
+  .step-num { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gold-light); margin-bottom: 14px; }
+  .step-card h3 { font-size: 16.5px; font-weight: 700; margin-bottom: 8px; }
+  .step-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+  /* ---------- Proof section ---------- */
+  .proof-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  .proof-badge {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(176,141,87,0.1);
+    border: 1px solid rgba(176,141,87,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 20px; color: var(--gold-light);
+  }
+  .proof-status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--new);
+    margin-bottom: 10px;
+  }
+  .proof-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .proof-card p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+  /* ---------- FAQ section ---------- */
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; font-size: 15.5px; font-weight: 600;
+  }
+  .faq-icon {
+    font-family: 'IBM Plex Mono', monospace; color: var(--gold-light); font-size: 16px;
+    transition: transform 0.25s ease;
+    flex-shrink: 0; margin-left: 20px;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    opacity: 0;
+    font-size: 14px; color: var(--muted); line-height: 1.65;
+  }
+  .faq-item.open .faq-a { max-height: 200px; opacity: 1; margin-top: 12px; }
+
+  /* ---------- Try It Live ---------- */
+  .try-live {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    max-width: 460px;
+    margin: 34px auto 0;
+  }
+  .try-live-messages {
+    padding: 18px 16px;
+    min-height: 220px;
+    display: flex; flex-direction: column; gap: 9px;
+    justify-content: flex-end;
+  }
+  .try-bubble { max-width: 84%; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; line-height: 1.5; opacity: 0; transform: translateY(6px); animation: rise-in 0.4s ease forwards; }
+  @keyframes rise-in { to { opacity: 1; transform: translateY(0); } }
+  .try-in { background: var(--surface-2); color: var(--white); border-bottom-left-radius: 3px; }
+  .try-out { background: var(--gold); color: var(--bg); font-weight: 500; margin-left: auto; border-bottom-right-radius: 3px; }
+  .try-live-options {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding: 14px 16px 18px;
+    border-top: 1px solid var(--line);
+  }
+  .try-live-btn {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;
+    border: 1px solid var(--gold); color: var(--gold-light);
+    background: rgba(176,141,87,0.06);
+    padding: 8px 14px; border-radius: 20px;
+    cursor: pointer;
+  }
+  .try-live-btn:hover { background: rgba(176,141,87,0.14); }
+  .try-live-btn:disabled { opacity: 0.35; cursor: default; }
+
+  /* ---------- Trust section ---------- */
+  .trust {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 52px 44px;
+    text-align: center;
+  }
+  .trust h2 { font-size: 27px; margin-bottom: 24px; }
+  .trust-split { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; max-width: 640px; margin: 0 auto; }
+  .trust-col { text-align: left; }
+  .trust-col .label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 8px; }
+  .trust-col p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .trust-divider { width: 1px; height: 50px; background: var(--line); }
+
+  /* ---------- Demo section ---------- */
+  .demo-wrap { text-align: center; }
+  .video-frame {
+    margin-top: 30px;
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--line);
+    aspect-ratio: 16/9;
+    max-width: 720px; margin-left: auto; margin-right: auto;
+  }
+  .video-frame iframe { width: 100%; height: 100%; border: 0; }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta { text-align: center; padding: 100px 0 110px; }
+  .final-cta h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 14px; }
+  .final-cta p { color: var(--muted); font-size: 15px; margin-bottom: 8px; }
+  .final-cta .btn-row { justify-content: center; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+    text-align: center;
+  }
+  footer .tagline { font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 13px; color: var(--gold-light); margin-bottom: 6px; }
+  footer p { font-size: 11.5px; color: var(--muted); }
+
+  h2.section-title { font-size: clamp(24px, 3.2vw, 32px); font-weight: 800; line-height: 1.2; margin-bottom: 14px; }
+  p.section-sub { color: var(--muted); font-size: 15px; max-width: 52ch; }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .steps-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    .trust-split { grid-template-columns: 1fr; }
+    .trust-divider { display: none; }
+  }
+  @media (max-width: 520px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .steps-grid.cols-3 { grid-template-columns: 1fr; }
+    .section { padding: 64px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .lead-card { opacity: 1 !important; transform: none !important; animation: none !important; }
+    .live-dot { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">
+        <img src="file_00000000b8dc82109b8fc8eb1354053d.png" alt="Front Desk AI" style="width:100%;height:100%;object-fit:contain;">
+      </div>
+      <div class="brand-name">Front Desk AI</div>
+    </div>
+    <a href="https://wa.me/2349059144435" class="nav-cta">Book a Live Demo</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">AI Front Desk for Real Estate</div>
+      <h1>Never miss a <span class="accent">property lead</span> again.</h1>
+      <p class="sub">Your AI front desk helps capture property enquiries, organize leads, and keep your team on top of every follow-up — day or night.</p>
+      <div class="btn-row">
+        <a href="https://wa.me/2349059144435" class="btn-primary">Book a Live Demo →</a>
+        <a href="#video" class="btn-secondary">▶ Watch 49-Sec Demo</a>
+      </div>
+    </div>
+
+    <div class="reveal" id="hero-dash">
+      <div class="browser-chrome">
+        <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+        <span class="chrome-url">app.frontdeskai.ng/leads</span>
+      </div>
+      <div class="dash">
+        <div class="dash-head">
+          <span class="title">Leads</span>
+          <span class="live-pill"><span class="live-dot"></span>LIVE</span>
+        </div>
+        <div class="lead-card dash-ghost">
+          <div class="lead-card-top">
+            <span class="lead-name">Chidinma A.</span>
+            <span class="status-badge" style="color:var(--muted); background:rgba(245,243,238,0.06);">CONTACTED</span>
+          </div>
+          <div class="lead-meta">2 Bed Apartment · Lekki Phase 1 <span class="mono">· 2d ago</span></div>
+        </div>
+        <div class="lead-card" id="hero-new-lead">
+          <div class="lead-card-top">
+            <span class="lead-name">David O.</span>
+            <span class="status-badge status-new">New</span>
+          </div>
+          <div class="lead-meta">3 Bed Apartment · Lekki <span class="mono">· just now</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROBLEM ================= -->
+<section class="section">
+  <div class="container">
+    <div class="problem-msg reveal">
+      <div class="time">11:47 PM</div>
+      <div class="msg">"Hi, is the 3-bedroom apartment still available?"</div>
+    </div>
+
+    <div class="compare-grid reveal">
+      <div class="compare-col bad">
+        <div class="compare-label bad-label">Without Front Desk AI</div>
+        <div class="flow-step"><span class="dot"></span>Message arrives</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><span class="dot"></span>Agent is asleep, busy, or offline</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step final"><span class="dot"></span>Lead gets buried</div>
+      </div>
+      <div class="compare-col good">
+        <div class="compare-label good-label">With Front Desk AI</div>
+        <div class="flow-step"><span class="dot"></span>Message arrives</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><span class="dot"></span>Enquiry captured instantly</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step final"><span class="dot"></span>Lead organized for follow-up</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEE IT IN ACTION (live interactive demo) ================= -->
+<section class="section" style="padding-top: 56px;">
+  <div class="container">
+    <div class="reveal" style="text-align:center; margin-bottom:8px;">
+      <div class="eyebrow" style="justify-content:center; display:flex;">See It In Action</div>
+      <h2 class="section-title">This isn't a screenshot. It actually replies.</h2>
+      <p class="section-sub" style="margin:0 auto;">Tap a question below and watch Front Desk AI respond, live, right here.</p>
+    </div>
+
+    <div class="try-live reveal">
+      <div class="try-live-messages" id="tryLiveMessages">
+        <div class="try-bubble try-in" style="animation-delay:0s;">Pick a question below to see how Front Desk AI responds 👇</div>
+      </div>
+      <div class="try-live-options" id="tryLiveOptions">
+        <button class="try-live-btn" data-q="available">Is it still available?</button>
+        <button class="try-live-btn" data-q="price">What's the price?</button>
+        <button class="try-live-btn" data-q="viewing">Can I book a viewing?</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCT ================= -->
+<section class="section">
+  <div class="container">
+    <div class="reveal" style="text-align:center; margin-bottom:44px;">
+      <div class="eyebrow" style="justify-content:center; display:flex;">Behind The Scenes</div>
+      <h2 class="section-title">From conversation to organized lead.</h2>
+      <p class="section-sub" style="margin:0 auto;">Every reply above also does this — quietly, in the background.</p>
+    </div>
+
+    <div class="product-grid reveal">
+      <div class="chat-mock">
+        <div class="chat-bubble chat-in">Hi, is the 3-bedroom apartment in Lekki still available?</div>
+        <div class="chat-bubble chat-out">Yes, it's available. Can I get your name and a good time to view it?</div>
+        <div class="chat-bubble chat-in">David, anytime this weekend works.</div>
+      </div>
+
+      <div>
+        <div class="browser-chrome">
+          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+          <span class="chrome-url">app.frontdeskai.ng/leads</span>
+        </div>
+        <div class="dash">
+          <div class="dash-head">
+            <span class="title">New Lead</span>
+          </div>
+          <div class="lead-card pop" style="animation-delay:0.3s;">
+            <div class="lead-card-top">
+              <span class="lead-name">David O.</span>
+              <span class="status-badge status-new">New</span>
+            </div>
+            <div class="lead-meta">
+              Interested in: <span class="mono">3 Bedroom Apartment</span><br>
+              Location: <span class="mono">Lekki</span><br>
+              Preferred time: <span class="mono">This weekend</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO IT'S FOR ================= -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="reveal" style="margin-bottom: 28px;">
+      <div class="eyebrow">Built For</div>
+      <h2 class="section-title">Made for how Nigerian real estate actually works.</h2>
+    </div>
+    <div class="steps-grid cols-3 reveal">
+      <div class="step-card">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" style="margin-bottom:14px;"><circle cx="12" cy="8" r="3.5" stroke="#D4B483" stroke-width="1.6"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" stroke="#D4B483" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>Independent Agents</h3>
+        <p>Handling enquiries solo, across rent, sale, and land — without missing a message while you're mid-showing.</p>
+      </div>
+      <div class="step-card">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" style="margin-bottom:14px;"><circle cx="8" cy="8" r="3" stroke="#D4B483" stroke-width="1.6"/><circle cx="16" cy="8" r="3" stroke="#D4B483" stroke-width="1.6"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5" stroke="#D4B483" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>Growing Agencies</h3>
+        <p>Multiple team members, multiple listings — enquiries stay organized instead of scattered across chats.</p>
+      </div>
+      <div class="step-card">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" style="margin-bottom:14px;"><circle cx="12" cy="12" r="8.5" stroke="#D4B483" stroke-width="1.6"/><path d="M3.5 12h17M12 3.5c2.2 2.2 3.5 5.3 3.5 8.5s-1.3 6.3-3.5 8.5c-2.2-2.2-3.5-5.3-3.5-8.5S9.8 5.7 12 3.5z" stroke="#D4B483" stroke-width="1.6"/></svg>
+        <h3>Diaspora-Focused Firms</h3>
+        <p>Clients messaging from different time zones get an instant reply, whatever time it is in Lagos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4-STEP SYSTEM ================= -->
+<section class="section">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:12px;">
+      <div class="eyebrow">The Workflow</div>
+      <h2 class="section-title">From a missed message to a booked viewing.</h2>
+      <p class="section-sub">Here's exactly what happens between a stranger's first "hi" and your next closed deal.</p>
+    </div>
+
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>They message. You don't miss it.</h3>
+        <p>Midnight, weekend, mid-showing — it doesn't matter. Someone messages, Front Desk AI is already replying.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>Every lead lands in one place.</h3>
+        <p>No more digging through five different chats trying to remember who asked about what.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>You know exactly who to call.</h3>
+        <p>Serious buyers are flagged and organized — you spend your time closing, not sorting.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <h3>The deal that almost got away — doesn't.</h3>
+        <p>The enquiry that would've gone cold at 2am becomes the viewing you close next week.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST ================= -->
+<section class="section">
+  <div class="container">
+    <div class="trust reveal">
+      <div class="eyebrow" style="justify-content:center; display:flex;">How It Fits Your Team</div>
+      <h2>AI handles the repetitive work.<br>Your team stays in control.</h2>
+      <div class="trust-split">
+        <div class="trust-col">
+          <div class="label">Front Desk AI</div>
+          <p>Handles routine enquiries, answers common questions, and organizes every lead the moment it arrives.</p>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-col">
+          <div class="label">Your Team</div>
+          <p>Handles the relationship, the negotiation, and closes the deal — Front Desk AI never replaces that.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEMO VIDEO ================= -->
+<section class="section demo-wrap" id="video">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow" style="justify-content:center; display:flex;">Prefer to Watch?</div>
+      <h2 class="section-title">Or see the full walkthrough.</h2>
+      <p class="section-sub" style="margin:0 auto;">49 seconds. One real property enquiry, start to finish.</p>
+    </div>
+    <div class="video-frame reveal">
+      <iframe src="https://www.youtube.com/embed/PASTE_YOUR_YOUTUBE_VIDEO_ID_HERE" title="Front Desk AI Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section">
+  <div class="container" style="max-width: 720px;">
+    <div class="reveal" style="margin-bottom:8px;">
+      <div class="eyebrow">Questions</div>
+      <h2 class="section-title">Before you ask.</h2>
+    </div>
+
+    <div class="reveal">
+      <div class="faq-item">
+        <div class="faq-q">Does this replace my agents? <span class="faq-icon">+</span></div>
+        <div class="faq-a">No. Front Desk AI handles the first reply and organizes the enquiry — your team still handles the relationship, the negotiation, and closes the deal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does it work on WhatsApp too? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Front Desk AI is built to embed directly on your website. You can also share your assistant's link over WhatsApp so customers can chat with it there, even without a full WhatsApp Business integration.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does it know when a property is sold? <span class="faq-icon">+</span></div>
+        <div class="faq-a">It works off the listing information you give it. If you mark a property as sold or unavailable, it tells customers that instead of booking a viewing — it only knows what you keep updated.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long does setup take? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Usually 24–48 hours once we have your listing details — property type, location, price, and a short description for each one.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What does it cost? <span class="faq-icon">+</span></div>
+        <div class="faq-a">We start every agency with a free trial on one listing, no cost and no obligation, so you can see it working before anything else is discussed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BRAND MOMENT ================= -->
+<section style="padding: 40px 0 0; text-align:center;">
+  <div class="container reveal">
+    <img src="file_00000000b8dc82109b8fc8eb1354053d.png" alt="Front Desk AI" style="max-width:280px; width:60%; height:auto; margin:0 auto; display:block;">
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta" id="demo">
+  <div class="container">
+    <div class="reveal">
+      <h2>Stop letting property enquiries disappear.</h2>
+      <p>Turn conversations into organized opportunities.</p>
+      <div class="btn-row">
+        <a href="https://wa.me/2349059144435" class="btn-primary">Book a Live Demo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="tagline">Real Conversations. Real Growth.</div>
+  <p>Front Desk AI — AI Front Desk for Real Estate</p>
+</footer>
+
+<script>
+  // Scroll-triggered reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Hero signature moment: the new lead card "arrives" once visible
+  const heroLead = document.getElementById('hero-new-lead');
+  const heroDash = document.getElementById('hero-dash');
+  const heroIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => heroLead.classList.add('pop'), 400);
+        heroIo.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  heroIo.observe(heroDash);
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Try It Live — real interactive mini-demo (scripted responses, no backend required)
+  const tryResponses = {
+    available: {
+      q: "Is it still available?",
+      a: "Yes, it's still available! It's a 3 bedroom apartment in Lekki. Would you like more details or to book a viewing?"
+    },
+    price: {
+      q: "What's the price?",
+      a: "It's ₦4.5M per year, fully serviced with all rooms ensuite. Want me to note your interest for the agent?"
+    },
+    viewing: {
+      q: "Can I book a viewing?",
+      a: "Sure! What day works best for you? I'll pass your preferred time straight to the agent."
+    }
+  };
+
+  const tryMessages = document.getElementById('tryLiveMessages');
+  const tryButtons = document.querySelectorAll('.try-live-btn');
+
+  tryButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.q;
+      const data = tryResponses[key];
+      if (!data) return;
+
+      tryButtons.forEach(b => b.disabled = true);
+
+      const userBubble = document.createElement('div');
+      userBubble.className = 'try-bubble try-out';
+      userBubble.textContent = data.q;
+      tryMessages.appendChild(userBubble);
+      tryMessages.scrollTop = tryMessages.scrollHeight;
+
+      setTimeout(() => {
+        const aiBubble = document.createElement('div');
+        aiBubble.className = 'try-bubble try-in';
+        aiBubble.textContent = data.a;
+        tryMessages.appendChild(aiBubble);
+        tryMessages.scrollTop = tryMessages.scrollHeight;
+        tryButtons.forEach(b => { if (b !== btn) b.disabled = false; });
+        btn.disabled = true;
+      }, 700);
+    });
+  });
+</script>
+
+</body>
+</html>
