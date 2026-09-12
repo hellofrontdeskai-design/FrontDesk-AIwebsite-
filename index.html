@@ -1,60 +1,490 @@
-!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090a0d">
-  <meta name="description" content="FrontDesk AI helps Nigerian real-estate teams respond to WhatsApp property enquiries faster and route better leads to agents.">
-  <title>FrontDesk AI | WhatsApp Lead Desk</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{--black:#090a0d;--panel:#12151a;--panel2:#191c22;--gold:#d7a84f;--gold2:#f2cb7b;--green:#28c76f;--white:#f7f7f4;--muted:#a2a6af;--line:rgba(255,255,255,.12);--cream:#f3f0e9;--ink:#111216;--ease:cubic-bezier(.23,1,.32,1)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--white);background:var(--black);font-family:Manrope,Arial,sans-serif;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}button{border:0}.wrap{width:min(1180px,100%);margin:auto;padding:0 28px}.mono{font-family:'DM Mono',monospace}.eyebrow{display:flex;align-items:center;gap:10px;color:var(--gold2);font:500 10px 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase}.eyebrow:before{content:"";width:28px;height:1px;background:var(--gold)}
-    .topline{height:34px;display:flex;align-items:center;justify-content:center;gap:9px;color:#a9adb5;border-bottom:1px solid var(--line);background:#15171d;font:9px 'DM Mono',monospace;letter-spacing:.11em;text-transform:uppercase}.topline b{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #28c76f1c}.topline a{color:var(--gold2);margin-left:10px}
-    header{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:#090a0dd9;backdrop-filter:blur(18px)}.nav{height:76px;display:flex;align-items:center;gap:28px}.logo-placeholder{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:12px 12px 12px 3px;color:var(--gold2);font:700 9px 'DM Mono',monospace;letter-spacing:.04em}.brand{display:flex;align-items:center;gap:11px;font:600 19px 'Space Grotesk',sans-serif;letter-spacing:-.05em}.brand em{font-style:normal;color:var(--gold2)}.links{display:flex;gap:28px;margin-left:auto;color:#a4a7af;font-size:12px;font-weight:700}.links a:hover{color:#fff}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 19px;border-radius:999px;font-size:12px;font-weight:800;cursor:pointer;transition:.2s var(--ease)}.btn:active{transform:scale(.97)}.gold{color:#17120a;background:linear-gradient(135deg,#efc977,#c79034);box-shadow:0 14px 30px #d7a84f2e,inset 0 1px #ffffff66}.gold:hover{transform:translateY(-2px);box-shadow:0 18px 38px #d7a84f4a}.outline{border:1px solid #ffffff35;background:#ffffff08}.outline:hover{border-color:#ffffff75;background:#ffffff12;transform:translateY(-2px)}.menu{display:none;margin-left:auto;color:#fff;background:none;font-size:24px}
-    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(circle at 82% 20%,#d7a84f1d,transparent 27%),radial-gradient(circle at 18% 80%,#28c76f0b,transparent 26%),var(--black)}.hero:before{content:"";position:absolute;inset:0;opacity:.24;background-image:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);background-size:74px 74px;mask-image:linear-gradient(#000,transparent 76%)}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;padding-top:104px;padding-bottom:82px}.hero h1{max-width:650px;margin:22px 0 25px;font:600 clamp(54px,6.4vw,86px)/.96 'Space Grotesk',sans-serif;letter-spacing:-.075em}.hero h1 span,h2 span{color:var(--gold2)}.hero-copy>p{max-width:520px;margin:0;color:#b5b8bf;font-size:17px;line-height:1.7}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:31px}.large{padding:16px 23px}.proof{display:flex;flex-wrap:wrap;gap:18px;margin-top:23px;color:#80848d;font-size:10px}.proof span{display:flex;align-items:center;gap:6px}.proof i{color:var(--green);font-style:normal}.flow{position:relative;min-height:440px;display:grid;place-items:center}.flow-card{width:min(100%,475px);min-height:410px;padding:21px;position:relative;border:1px solid #d7a84f75;border-radius:26px;background:linear-gradient(145deg,#202329f7,#0f1115f7);box-shadow:0 38px 85px #0000007a,inset 0 1px #ffffff15;transform:rotate(1.7deg)}.flow-card:before{content:"";position:absolute;width:260px;height:260px;top:-150px;right:-80px;border-radius:50%;background:#d7a84f2b;filter:blur(22px)}.flow-head,.flow-foot{position:relative;z-index:1;display:flex;justify-content:space-between;color:#777b84;font:9px 'DM Mono',monospace;letter-spacing:.09em}.flow-head b{color:var(--gold2);font-weight:500}.live{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #28c76f19}.messages{display:grid;gap:17px;padding:60px 0 24px 26px;position:relative;z-index:1}.message{width:88%;position:relative;padding:15px 16px 22px;border-radius:17px 17px 17px 4px;background:#282b32;color:#e1e3e7;font-size:12px;line-height:1.55}.message small{position:absolute;right:12px;bottom:7px;color:#777b85;font:8px 'DM Mono',monospace}.message.out{justify-self:end;border-radius:17px 17px 4px 17px;background:#155a3c;color:#e5f7ec}.message.out small{color:#8ce2ae}.lead{position:relative;z-index:1;display:flex;align-items:center;gap:11px;padding:15px;border:1px solid #d7a84f75;border-radius:16px;background:linear-gradient(100deg,#422f12e6,#1e1b17f7)}.bell{width:35px;height:35px;display:grid;place-items:center;border-radius:11px;background:var(--gold2);color:#17120a;font-size:18px}.lead-copy{display:grid;gap:3px;min-width:0}.lead-copy b{color:var(--gold2);font:8px 'DM Mono',monospace;letter-spacing:.1em}.lead-copy strong{font-size:11px;white-space:nowrap}.lead-copy small{color:#aaa298;font-size:9px;white-space:nowrap}.qualified{margin-left:auto;padding:5px 7px;border:1px solid #d7a84f75;border-radius:999px;color:#f7d88d;font:7px 'DM Mono',monospace}.flow-foot{margin-top:29px}.flow-foot b{color:#a8adb3;font-weight:400}.flow-foot b:first-child{color:#83dca7}.hero-bottom{position:relative;z-index:1;display:flex;justify-content:space-between;padding:16px 0 20px;border-top:1px solid var(--line);color:#6d7179;font:9px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}.hero-bottom a{color:var(--gold2)}
-    .ticker{overflow:hidden;border-bottom:1px solid #3b2d17;background:#17130c}.ticker-inner{display:flex;justify-content:center;align-items:center;gap:28px;min-width:max-content;padding:14px 0;color:#d8af61;font:10px 'DM Mono',monospace;letter-spacing:.18em}.ticker i{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
-    section{padding:118px 0}.cream{color:var(--ink);background:var(--cream)}.section-head{display:grid;grid-template-columns:1fr .65fr;gap:90px;align-items:end}.section-head h2,.dark-head h2,.trial h2,.faq h2,.pricing h2,.final h2{margin:17px 0 0;font:600 clamp(38px,4.6vw,60px)/1.03 'Space Grotesk',sans-serif;letter-spacing:-.065em}.section-head>p{margin:0;color:#64666d;font-size:15px;line-height:1.75}.outcomes{display:grid;grid-template-columns:repeat(3,1fr);margin-top:62px;border-top:1px solid #11121625;border-bottom:1px solid #11121625}.outcome{min-height:282px;padding:30px 33px 30px 0;border-right:1px solid #11121625}.outcome+.outcome{padding-left:33px}.outcome:last-child{border:0}.outcome small{color:#9a8967;font:10px 'DM Mono',monospace}.outcome-icon{width:45px;height:45px;display:grid;place-items:center;margin-top:43px;border-radius:14px;background:#e8e1d3;color:#89682e;font-size:21px}.outcome h3{margin:19px 0 9px;font:600 21px 'Space Grotesk',sans-serif;letter-spacing:-.04em}.outcome p{margin:0;color:#64666d;font-size:13px;line-height:1.7}.outcome a{display:inline-flex;gap:5px;margin-top:19px;color:#84642d;font-size:11px;font-weight:800}
-    .dark-section{background:var(--panel)}.dark-head{text-align:center}.dark-head .eyebrow{justify-content:center}.dark-head>p{max-width:560px;margin:24px auto 0;color:#8e929b;font-size:15px;line-height:1.75}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:60px}.feature{min-height:185px;padding:24px;position:relative;border:1px solid var(--line);border-radius:18px;background:linear-gradient(140deg,#ffffff09,#ffffff02);transition:.2s}.feature:hover{transform:translateY(-4px);border-color:#d7a84f75;background:#d7a84f17}.feature-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:#d7a84f1a;color:var(--gold2);font-size:19px}.feature h3{margin:18px 0 8px;font:600 17px 'Space Grotesk',sans-serif}.feature p{margin:0;color:#8f939c;font-size:12px;line-height:1.7}.feature:after{content:"↗";position:absolute;right:23px;top:25px;color:#626771}.safe{max-width:710px;display:flex;gap:13px;align-items:center;margin:40px auto 0;padding:16px 19px;border:1px solid #d7a84f33;border-radius:14px;background:#d7a84f0c;color:#abb0b7;font-size:12px;line-height:1.55}.safe strong{color:#e4c179}
-    .demo-section{background:linear-gradient(180deg,#0c0e12,#11141b)}.demo-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:center}.demo-grid h2{max-width:520px}.demo-grid>div>p{max-width:450px;color:#8f939c;font-size:15px;line-height:1.75}.text-link{display:inline-flex;gap:8px;margin-top:24px;color:var(--gold2);border-bottom:1px solid #d7a84f75;padding-bottom:6px;font-size:12px;font-weight:800}.stats{display:flex;gap:35px;margin-top:68px;padding-top:17px;border-top:1px solid var(--line)}.stats strong{display:block;font:600 27px 'Space Grotesk',sans-serif;letter-spacing:-.06em}.stats span{display:block;margin-top:4px;color:#777b84;font-size:9px;letter-spacing:.1em;text-transform:uppercase}.phone{min-height:440px;padding:20px;border:1px solid #d7a84f64;border-radius:26px;background:radial-gradient(circle at 90% 10%,#d7a84f1c,transparent 32%),#191c21;box-shadow:0 30px 70px #00000061}.phone-head{display:flex;align-items:center;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--line)}.avatar{width:35px;height:35px;display:grid;place-items:center;border-radius:11px;background:var(--gold2);color:#17120a;font:700 11px 'Space Grotesk',sans-serif}.phone-head strong,.phone-head small{display:block}.phone-head strong{font-size:12px}.phone-head small{margin-top:3px;color:var(--green);font:8px 'DM Mono',monospace}.push{margin-left:auto}.screen{min-height:235px;display:grid;align-content:center;gap:13px;padding:26px 15px 16px;background-image:radial-gradient(#fff1 .7px,transparent .7px);background-size:11px 11px}.time{text-align:center;color:#6f737d;font:8px 'DM Mono',monospace}.mini{max-width:74%;padding:12px 14px;border-radius:14px 14px 14px 3px;background:#2b2e35;color:#dfe2e5;font-size:11px;line-height:1.5}.mini.out{justify-self:end;border-radius:14px 14px 3px 14px;background:#135638;color:#e3f7eb}.alert-card{padding:15px;border:1px solid #d7a84f80;border-radius:15px;background:linear-gradient(120deg,#422f12f5,#1e1b17fa)}.alert-head,.alert-foot{display:flex;justify-content:space-between;color:#8d897f;font:8px 'DM Mono',monospace;letter-spacing:.08em}.alert-head span:first-child{color:var(--gold2)}.alert-card strong{display:block;margin:10px 0 4px;font-size:13px}.alert-card p{margin:0;color:#b6ada0;font-size:10px}.alert-foot{margin-top:14px;color:#a9d6b8}
-    .trial{color:var(--ink);background:var(--cream)}.trial-grid{display:grid;grid-template-columns:.92fr .78fr;gap:115px}.trial-copy>p{max-width:525px;margin:24px 0 0;color:#64666d;font-size:15px;line-height:1.8}.trial h2 span{color:#ae7f2d}.steps{display:grid;gap:18px;margin-top:40px}.step{display:flex;gap:15px;align-items:flex-start}.step b{width:29px;height:29px;display:grid;place-items:center;border:1px solid #c4a96d;border-radius:50%;color:#9a722d;font:9px 'DM Mono',monospace}.step p{margin:0;color:#73757c;font-size:12px;line-height:1.55}.step strong{color:#1d1e22;font-size:13px}.trial-note{display:flex;gap:8px;align-items:center;margin-top:37px;color:#89662c;font-size:11px;font-weight:800}.form-card{padding:29px;border:1px solid #11121629;border-radius:23px;background:#fffdf9;box-shadow:0 25px 55px #261f1417}.form-top{display:flex;justify-content:space-between;color:#98732f;font:10px 'DM Mono',monospace;letter-spacing:.12em}.form-card h3{margin:23px 0 10px;color:#191a1e;font:600 25px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.05em}.form-card>p{margin:0 0 22px;color:#777981;font-size:12px;line-height:1.6}.form{display:grid;gap:13px}.form label{display:grid;gap:6px;color:#4f5056;font-size:10px;font-weight:800}.form input,.form select,.form textarea{width:100%;padding:12px 13px;outline:none;resize:vertical;border:1px solid #dedbd3;border-radius:10px;background:#faf8f3;color:#222329;font-size:12px}.form input:focus,.form select:focus,.form textarea:focus{border-color:#b88a3c;box-shadow:0 0 0 3px #b88a3c1f}.row{display:grid;grid-template-columns:1fr 1fr;gap:11px}.fine{color:#9a9b99;text-align:center;font-size:9px;line-height:1.5}
-    .pricing{padding:88px 0 28px;color:var(--ink);background:var(--cream)}.pricebox{display:grid;grid-template-columns:1.08fr .92fr;gap:65px;padding:49px;border-radius:24px;background:#13151b;color:#fff;box-shadow:0 25px 55px #13151b24}.pricing h2{max-width:540px}.pricing p{max-width:500px;color:#8f939c;font-size:14px;line-height:1.7}.price-side{padding-left:48px;border-left:1px solid var(--line)}.price{color:var(--gold2);font:600 52px 'Space Grotesk',sans-serif;letter-spacing:-.07em}.price small{color:#888c95;font:600 12px Manrope,sans-serif;letter-spacing:0}.price-side ul{display:grid;gap:14px;padding:0;margin:27px 0 0;list-style:none;color:#bbc0c8;font-size:12px}.price-side li{display:flex;gap:9px}.price-side li b{color:var(--green)}.boundary{display:flex;justify-content:center;gap:7px;margin:19px 0 0;color:#797b7c;font-size:10px;text-align:center}
-    .faq{color:var(--ink);background:var(--cream);padding-top:100px}.faq-grid{display:grid;grid-template-columns:.7fr 1.15fr;gap:115px}.faq h2{font-size:clamp(36px,4vw,54px)}.faq-intro>p{max-width:340px;color:#64666d;font-size:14px;line-height:1.75}.faq-list{border-top:1px solid #11121625}.faq-item{border-bottom:1px solid #11121625}.faq-item button{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;background:none;color:#1f2024;text-align:left;font-size:14px;font-weight:800;cursor:pointer}.faq-item button span{font-size:19px;color:#987334;transition:.2s}.faq-item.open button span{transform:rotate(180deg)}.answer{padding:0 38px 21px 0;color:#6e7077;font-size:13px;line-height:1.75}.answer p{margin:0}.final{padding:94px 0;background:radial-gradient(circle at 85% 40%,#d7a84f2d,transparent 31%),#0c0e12}.final-grid{display:flex;justify-content:space-between;align-items:end;gap:40px}.final h2{max-width:700px;margin:18px 0 15px;color:#fff;font-size:clamp(40px,5vw,65px)}.final p{margin:0;color:#8f939c;font-size:14px}.footer{border-top:1px solid var(--line);background:#08090b}.footer-main{min-height:125px;display:flex;align-items:center;gap:34px}.footer-main p{margin:0;color:#777b84;font-size:11px}.footer-bottom{display:flex;justify-content:space-between;padding:16px 28px;border-top:1px solid #ffffff12;color:#555a63;font:9px 'DM Mono',monospace}.whatsapp-mobile{display:none}
-    @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:48px}.section-head,.demo-grid,.trial-grid,.faq-grid{grid-template-columns:1fr;gap:45px}.pricebox{gap:36px}}
-    @media(max-width:700px){.wrap{padding:0 18px}.topline{height:43px;justify-content:flex-start;flex-wrap:wrap;font-size:8px}.topline a{margin-left:auto}.nav{height:67px}.links,.nav>.btn{display:none}.menu{display:block}.mobile-links{display:none}.hero-grid{gap:30px;padding-top:62px;padding-bottom:48px}.eyebrow{font-size:8px}.hero h1{margin:18px 0;font-size:clamp(48px,15vw,70px)}.hero-copy>p{font-size:14px}.actions{display:grid;margin-top:25px}.actions .btn{width:100%}.proof{gap:11px;font-size:8px}.proof span:nth-child(2){display:none}.flow{min-height:380px}.flow-card{min-height:355px;padding:15px;transform:none}.messages{padding:43px 0 18px 9px}.message{width:93%;padding:12px 13px 21px;font-size:10px}.lead{padding:12px;gap:8px}.lead-copy strong{font-size:9px}.lead-copy small{font-size:7px}.qualified{display:none}.hero-bottom{gap:17px;align-items:flex-start;padding:16px 18px 20px;font-size:7px;line-height:1.5}.hero-bottom a{text-align:right}.ticker-inner{justify-content:flex-start;gap:18px;font-size:8px}section{padding:78px 0}.section-head h2,.dark-head h2,.trial h2,.faq h2,.pricing h2,.final h2{font-size:41px}.section-head{gap:22px}.section-head>p{font-size:13px}.outcomes{grid-template-columns:1fr;margin-top:40px}.outcome,.outcome+.outcome{min-height:0;padding:25px 0;border-right:0;border-bottom:1px solid #11121625}.outcome:last-child{border-bottom:0}.outcome-icon{margin-top:25px}.features{grid-template-columns:1fr;gap:10px;margin-top:40px}.feature{min-height:157px}.safe{align-items:flex-start;font-size:11px}.demo-grid{gap:42px}.stats{gap:19px;margin-top:43px}.stats strong{font-size:23px}.stats span{font-size:7px}.phone{min-height:410px;padding:15px;border-radius:21px}.trial-grid{gap:37px}.form-card{padding:22px 17px}.form-card h3{font-size:22px}.row{grid-template-columns:1fr;gap:13px}.pricing{padding-top:55px}.pricebox{grid-template-columns:1fr;padding:28px 21px;gap:30px}.price-side{padding:28px 0 0;border-left:0;border-top:1px solid var(--line)}.price{font-size:43px}.boundary{justify-content:flex-start;text-align:left;line-height:1.5}.faq{padding-top:74px}.faq-grid{gap:33px}.faq-item button{padding:17px 0;font-size:12px}.answer{font-size:12px}.final{padding:72px 0 97px}.final-grid{display:grid;gap:28px}.footer-main{display:grid;gap:15px;align-items:start;padding-top:35px;padding-bottom:30px}.footer-bottom{padding-left:18px;padding-right:18px;font-size:8px;gap:13px}.whatsapp-mobile{position:fixed;z-index:15;display:flex;justify-content:center;align-items:center;gap:8px;left:16px;right:16px;bottom:14px;padding:14px;border-radius:999px;background:#62da91;color:#07170d;box-shadow:0 10px 30px #00000061;font-size:12px;font-weight:800}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrontDesk AI | Never miss a property lead again</title>
+<meta name="description" content="A 24/7 WhatsApp lead desk for Nigerian real-estate teams — answers enquiries, qualifies prospects, and alerts your agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0d0c;
+    --bg-soft:#141312;
+    --panel:#171615;
+    --panel-border:#2a2825;
+    --gold:#B08D57;
+    --gold-soft:rgba(176,141,87,0.14);
+    --text:#F3EFE9;
+    --text-dim:#9C968C;
+    --text-faint:#67615A;
+    --radius:14px;
+    --ease:cubic-bezier(.16,.8,.24,1);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold);
+  }
+  .eyebrow::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--gold); display:inline-block;}
+  h1,h2,h3{font-weight:700; letter-spacing:-0.02em; line-height:1.08;}
+  section{padding:120px 0;}
+  @media(max-width:768px){ section{padding:72px 0;} }
+  .section-label{color:var(--text-dim); font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px; display:block;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(28px,4vw,42px); margin-bottom:16px;}
+  .section-head p{color:var(--text-dim); font-size:17px; line-height:1.65;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px; border-radius:9px; font-weight:600; font-size:14.5px;
+    transition:transform .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--gold); color:#171410;}
+  .btn-primary:hover{transform:translateY(-2px); background:#c39d68;}
+  .btn-ghost{border:1px solid var(--panel-border); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--gold); transform:translateY(-2px);}
+  .btn .arrow{transition:transform .3s var(--ease);}
+  .btn:hover .arrow{transform:translateX(3px);}
+
+  /* NAV */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:22px 0; transition:padding .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    padding:12px 0; background:rgba(14,13,12,0.78); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--panel-border);
+  }
+  nav{display:flex; align-items:center; justify-content:space-between;}
+  .logo{font-size:16px; font-weight:700; letter-spacing:-0.01em;}
+  .logo em{color:var(--gold); font-style:normal;}
+  .nav-links{display:flex; gap:34px; align-items:center;}
+  .nav-links a{font-size:14px; color:var(--text-dim); transition:color .25s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .burger{display:none; width:22px; height:16px; position:relative; cursor:pointer;}
+  .burger span{position:absolute; left:0; right:0; height:1.5px; background:var(--text);}
+  .burger span:nth-child(1){top:0;} .burger span:nth-child(2){top:7px;} .burger span:nth-child(3){top:14px;}
+  @media(max-width:860px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+  }
+
+  /* HERO */
+  .hero{padding:180px 0 100px; position:relative;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center;}
+  @media(max-width:980px){ .hero-grid{grid-template-columns:1fr;} .hero{padding:150px 0 60px;} }
+  .hero h1{font-size:clamp(38px,5.2vw,64px); margin:20px 0 22px;}
+  .hero p.lead{font-size:18px; color:var(--text-dim); max-width:480px; line-height:1.7; margin-bottom:34px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:28px;}
+  .hero-trust{font-size:13px; color:var(--text-faint);}
+  .hero-trust b{color:var(--text-dim); font-weight:600;}
+
+  /* PHONE / DEMO PANEL */
+  .phone{
+    background:var(--panel); border:1px solid var(--panel-border); border-radius:20px;
+    padding:20px; position:relative; box-shadow:0 40px 80px -30px rgba(0,0,0,.6);
+  }
+  .phone-head{display:flex; align-items:center; gap:10px; padding-bottom:14px; border-bottom:1px solid var(--panel-border); margin-bottom:16px;}
+  .phone-avatar{width:34px; height:34px; border-radius:50%; background:var(--gold-soft); border:1px solid var(--gold); color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;}
+  .phone-head .name{font-size:14px; font-weight:600;}
+  .phone-head .status{font-size:11.5px; color:var(--text-faint);}
+  .status .dot{width:6px; height:6px; border-radius:50%; background:#5FBF7A; display:inline-block; margin-right:5px;}
+  .bubble{
+    max-width:82%; padding:11px 14px; border-radius:12px; font-size:13.6px; line-height:1.5;
+    margin-bottom:10px; opacity:0; transform:translateY(8px);
+    animation:bubbleIn .5s var(--ease) forwards;
+  }
+  .bubble.them{background:var(--bg-soft); border:1px solid var(--panel-border); border-bottom-left-radius:3px;}
+  .bubble.us{background:var(--gold-soft); border:1px solid rgba(176,141,87,.35); margin-left:auto; border-bottom-right-radius:3px;}
+  @keyframes bubbleIn{to{opacity:1; transform:translateY(0);}}
+  .bubble:nth-child(1){animation-delay:.1s;}
+  .bubble:nth-child(2){animation-delay:.9s;}
+  .bubble:nth-child(3){animation-delay:1.7s;}
+  .lead-card{
+    margin-top:16px; border:1px solid var(--panel-border); border-radius:12px; padding:14px;
+    background:var(--bg-soft); opacity:0; transform:translateY(10px);
+    animation:bubbleIn .6s var(--ease) forwards; animation-delay:2.4s;
+  }
+  .lead-card .tag{font-size:10.5px; font-weight:700; letter-spacing:.08em; color:var(--gold); text-transform:uppercase;}
+  .lead-card .row{display:flex; justify-content:space-between; font-size:13px; padding:6px 0; border-top:1px solid var(--panel-border);}
+  .lead-card .row span:first-child{color:var(--text-faint);}
+  .lead-card .status-pill{
+    margin-top:10px; display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600;
+    color:#5FBF7A; letter-spacing:.04em;
+  }
+  .lead-card .status-pill::before{content:""; width:6px; height:6px; border-radius:50%; background:#5FBF7A;}
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease), transform .7s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .stagger .reveal:nth-child(1){transition-delay:.05s;}
+  .stagger .reveal:nth-child(2){transition-delay:.15s;}
+  .stagger .reveal:nth-child(3){transition-delay:.25s;}
+  .stagger .reveal:nth-child(4){transition-delay:.35s;}
+  .stagger .reveal:nth-child(5){transition-delay:.45s;}
+  .stagger .reveal:nth-child(6){transition-delay:.55s;}
+
+  /* PROBLEM */
+  .problem-list{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--panel-border); border:1px solid var(--panel-border); border-radius:var(--radius); overflow:hidden;}
+  @media(max-width:768px){ .problem-list{grid-template-columns:1fr;} }
+  .problem-item{background:var(--bg); padding:28px;}
+  .problem-item .time{font-family:'Instrument Serif', serif; font-style:italic; font-size:22px; color:var(--gold); margin-bottom:10px;}
+  .problem-item p{color:var(--text-dim); font-size:14.5px;}
+  .problem-note{margin-top:36px; font-size:16.5px; color:var(--text); max-width:600px;}
+
+  /* PROCESS STEPS */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media(max-width:900px){ .steps{grid-template-columns:1fr;} }
+  .step{border:1px solid var(--panel-border); border-radius:var(--radius); padding:26px; background:var(--panel); transition:border-color .3s, transform .3s;}
+  .step:hover{border-color:var(--gold); transform:translateY(-4px);}
+  .step .num{font-size:12px; color:var(--gold); font-weight:700; letter-spacing:.08em; margin-bottom:14px;}
+  .step h3{font-size:17px; margin-bottom:8px;}
+  .step p{font-size:14px; color:var(--text-dim);}
+
+  /* FEATURE GRID */
+  .feature-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media(max-width:900px){ .feature-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:640px){ .feature-grid{grid-template-columns:1fr;} }
+  .feature-card{
+    border:1px solid var(--panel-border); border-radius:var(--radius); padding:26px;
+    background:var(--panel); transition:border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .feature-card:hover{border-color:var(--gold); transform:translateY(-4px);}
+  .feature-icon{
+    width:38px; height:38px; border-radius:9px; background:var(--gold-soft); border:1px solid rgba(176,141,87,.4);
+    display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:16px; margin-bottom:16px;
+  }
+  .feature-card h3{font-size:16px; margin-bottom:8px;}
+  .feature-card p{font-size:14px; color:var(--text-dim); line-height:1.6;}
+  .safe-note{
+    margin-top:28px; border:1px solid var(--panel-border); border-radius:12px; padding:18px 20px;
+    font-size:14px; color:var(--text-dim); background:var(--bg-soft);
+  }
+  .safe-note b{color:var(--gold);}
+
+  /* NG REAL ESTATE SECTION */
+  .ng-section{background:var(--bg-soft); border-top:1px solid var(--panel-border); border-bottom:1px solid var(--panel-border);}
+  .ng-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  @media(max-width:860px){ .ng-grid{grid-template-columns:1fr;} }
+  .ng-list li{
+    display:flex; gap:12px; padding:13px 0; border-top:1px solid var(--panel-border); font-size:15px; color:var(--text-dim);
+  }
+  .ng-list li:first-child{border-top:none;}
+  .ng-list li b{color:var(--text); font-weight:600; min-width:150px; display:inline-block;}
+
+  /* LEAD SUMMARY VISUAL */
+  .agent-card{
+    background:var(--panel); border:1px solid var(--panel-border); border-radius:var(--radius); padding:26px;
+    max-width:400px;
+  }
+  .agent-card .tag{font-size:11px; letter-spacing:.08em; color:var(--gold); font-weight:700; text-transform:uppercase; margin-bottom:14px;}
+  .agent-card h3{font-size:19px; margin-bottom:2px;}
+  .agent-card .sub{font-size:13.5px; color:var(--text-dim); margin-bottom:18px;}
+  .agent-card .field{display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid var(--panel-border); font-size:14px;}
+  .agent-card .field span:first-child{color:var(--text-faint);}
+  .agent-card .field span:last-child{text-align:right; max-width:60%;}
+  .agent-card .final-status{
+    margin-top:16px; display:inline-flex; gap:7px; align-items:center; font-size:12px; font-weight:700;
+    color:#5FBF7A; letter-spacing:.05em;
+  }
+  .agent-card .final-status::before{content:""; width:6px; height:6px; border-radius:50%; background:#5FBF7A;}
+
+  /* TRIAL / PRICING */
+  .pricing-card{
+    border:1px solid var(--panel-border); border-radius:var(--radius); padding:36px; background:var(--panel);
+    max-width:420px;
+  }
+  .price{font-size:38px; font-weight:800; margin:8px 0 22px;}
+  .price span{font-size:15px; color:var(--text-dim); font-weight:500;}
+  .pricing-card ul li{display:flex; gap:10px; font-size:14.5px; color:var(--text-dim); padding:8px 0;}
+  .pricing-card ul li::before{content:"✓"; color:var(--gold); font-weight:700;}
+
+  /* FAQ */
+  .faq-item{border-top:1px solid var(--panel-border); padding:20px 0;}
+  .faq-item:last-child{border-bottom:1px solid var(--panel-border);}
+  .faq-q{display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-size:16px; font-weight:600;}
+  .faq-q .plus{color:var(--gold); transition:transform .3s var(--ease); font-size:20px;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .4s var(--ease); font-size:14.5px; color:var(--text-dim); line-height:1.7;}
+  .faq-a p{padding-top:12px;}
+
+  /* CTA */
+  .cta-section{text-align:center; padding:130px 0;}
+  .cta-section h2{font-size:clamp(30px,4.4vw,46px); max-width:680px; margin:18px auto 20px;}
+  .cta-section p{color:var(--text-dim); font-size:17px; max-width:500px; margin:0 auto 34px;}
+  .cta-ctas{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+
+  footer{border-top:1px solid var(--panel-border); padding:48px 0; font-size:13.5px; color:var(--text-faint);}
+  .footer-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+</style>
 </head>
 <body>
-  <div class="topline"><b></b><span>WhatsApp-first lead response for Nigerian real-estate teams</span><a href="#trial">See the 3-day live trial ↗</a></div>
-  <header><div class="wrap nav"><a class="brand" href="#top"><!-- LOGO PLACEHOLDER: replace this box with your logo --><span class="file_00000000b8dc82109b8fc8eb1354053d.png">YOUR<br>LOGO</span><span>FrontDesk <em>AI</em></span></a><nav class="links"><a href="#how">How it works</a><a href="#features">What it handles</a><a href="#trial">3-day trial</a><a href="#faq">FAQs</a></nav><a class="btn gold" href="#trial">Watch the demo ↗</a><button class="menu" id="menu" aria-label="Open navigation">☰</button></div></header>
-  <main id="top">
-    <section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><div class="eyebrow">FrontDesk AI / WhatsApp lead desk</div><h1>Stop losing property <span>enquiries</span> on WhatsApp.</h1><p>A 24/7 WhatsApp lead desk for Nigerian real-estate teams that replies fast, qualifies serious prospects, and alerts the right agent.</p><div class="actions"><a class="btn gold large" href="#demo">Watch the demo ↗</a><a class="btn outline large" href="#trial">Start the 3-day trial →</a></div><div class="proof"><span><i>✓</i> WhatsApp-first</span><span><i>✓</i> Human handoff included</span><span><i>✓</i> Built for property teams</span></div></div><div class="flow" id="demo"><div class="flow-card"><div class="flow-head"><b><i class="live"></i>LIVE LEAD FLOW</b><span>00:11:48</span></div><div class="messages"><div class="message">Hi, I need a 3-bedroom apartment in Lekki around ₦80m. What do you have available?<small>11:48 PM</small></div><div class="message out">I can help with that. Are you looking to buy or rent, and when would you like to complete the purchase?<small>11:48 PM ✓✓</small></div></div><div class="lead"><div class="bell">♧</div><div class="lead-copy"><b>NEW PROPERTY LEAD</b><strong>3-bedroom · Lekki · ₦80m</strong><small>Budget and timeline captured · Agent notified</small></div><span class="qualified">QUALIFIED</span></div><div class="flow-foot"><b>ϟ Response in seconds</b><span>FrontDesk AI ·</span></div></div></div></div><div class="wrap hero-bottom"><span>For agencies · developers · rental teams · short-let operators</span><a href="#how">Explore the workflow ↓</a></div></section>
-    <div class="ticker"><div class="ticker-inner"><span>REPLY FASTER</span><i></i><span>CAPTURE THE DETAILS</span><i></i><span>ROUTE TO THE RIGHT AGENT</span><i></i><span>REPLY FASTER</span><i></i><span>CAPTURE THE DETAILS</span><i></i><span>ROUTE TO THE RIGHT AGENT</span></div></div>
-    <section id="how" class="cream"><div class="wrap"><div class="section-head"><div><div class="eyebrow" style="color:#89682e">The leak in the pipeline</div><h2>Your next buyer may already be messaging you.</h2></div><p>Property enquiries arrive when agents are busy, asleep, in traffic, or at inspections. FrontDesk AI makes sure the first response happens immediately — then gives your team the context to follow up.</p></div><div class="outcomes"><article class="outcome"><small>01</small><div class="outcome-icon">↗</div><h3>Reply immediately</h3><p>A fast first response for supported enquiries, even when your team is offline.</p><a href="#features">See the flow ↗</a></article><article class="outcome"><small>02</small><div class="outcome-icon">◎</div><h3>Qualify intent</h3><p>Capture property, location, budget, timeline, and inspection interest.</p><a href="#features">See the flow ↗</a></article><article class="outcome"><small>03</small><div class="outcome-icon">⌁</div><h3>Alert the right agent</h3><p>Send a clear lead summary so your team knows who to call and what to do next.</p><a href="#features">See the flow ↗</a></article></div></div></section>
-    <section id="features" class="dark-section"><div class="wrap"><div class="dark-head"><div class="eyebrow">From first message to follow-up</div><h2>One WhatsApp conversation.<br><span>Three business outcomes.</span></h2><p>Not another dashboard to learn. A managed lead desk that handles the front of the conversation and gets your agents into the right conversations faster.</p></div><div class="features"><article class="feature"><div class="feature-icon">⌂</div><h3>Property enquiries</h3><p>Answer approved questions about listings, areas, prices, bedrooms, features, and policies.</p></article><article class="feature"><div class="feature-icon">⌖</div><h3>Property search</h3><p>Guide buyers and renters through location, budget, bedrooms, and intent.</p></article><article class="feature"><div class="feature-icon">◉</div><h3>Lead capture</h3><p>Turn a loose WhatsApp conversation into usable contact and qualification details.</p></article><article class="feature"><div class="feature-icon">◷</div><h3>Inspection requests</h3><p>Collect preferred property, date, time, and contact details for human confirmation.</p></article><article class="feature"><div class="feature-icon">◇</div><h3>Human handoff</h3><p>Escalate negotiations, complaints, complex questions, and high-intent prospects safely.</p></article><article class="feature"><div class="feature-icon">▥</div><h3>Monthly reporting</h3><p>See conversations, qualified leads, handoffs, inspection requests, and after-hours activity.</p></article></div><div class="safe">◈ <span><strong>Safe by design.</strong> When information is missing or uncertain, FrontDesk AI routes the question to a human instead of guessing.</span></div></div></section>
-    <section class="demo-section"><div class="wrap demo-grid"><div><div class="eyebrow">The after-hours moment</div><h2>When the prospect messages at <span>11:48 p.m.</span></h2><p>The difference is not a flashy bot. It is the gap between a prospect waiting until morning and a clean opportunity landing in the agent’s queue now.</p><a class="text-link" href="#trial">Start the 3-day live trial →</a><div class="stats"><div><strong>24/7</strong><span>First response</span></div><div><strong>01</strong><span>Clear lead owner</span></div><div><strong>0</strong><span>Guesswork promised</span></div></div></div><div class="phone"><div class="phone-head"><span class="avatar">FD</span><div><strong>Property Enquiry</strong><small>online</small></div><span class="push">⌕</span><span>•••</span></div><div class="screen"><div class="time">TODAY, 11:48 PM</div><div class="mini">Is the 4-bedroom duplex in Ikoyi still available?</div><div class="mini out">I can help with that. What is your budget and preferred inspection timeline?</div><div class="mini">Budget is ₦120m. I can inspect this weekend.</div></div><div class="alert-card"><div class="alert-head"><span>● NEW LEAD ALERT</span><span>11:49 PM</span></div><strong>Sarah · 4-bedroom duplex</strong><p>Ikoyi · ₦120m · Inspection this weekend</p><div class="alert-foot"><span>✓ Agent notified</span><span>HIGH INTENT</span></div></div></div></div></section>
-    <section id="trial" class="trial"><div class="wrap trial-grid"><div class="trial-copy"><div class="eyebrow" style="color:#89682e">The low-risk start</div><h2>Test the workflow in <span>3 days.</span></h2><p>We configure a focused WhatsApp lead desk around your approved listings and enquiry process. You see real conversations, handoffs, and the results before deciding on the monthly service.</p><div class="steps"><div class="step"><b>01</b><p><strong>Setup</strong><br>Business details, listings, FAQs, agents.</p></div><div class="step"><b>02</b><p><strong>Launch</strong><br>Approve, test, and go live.</p></div><div class="step"><b>03</b><p><strong>Review</strong><br>Results report and next decision.</p></div></div><div class="trial-note">✓ No long training sessions. No complicated dashboard for your agents.</div></div><div class="form-card"><div class="form-top"><span>3-DAY LIVE TRIAL</span><span>NO PRESSURE</span></div><h3>See if your enquiry flow can become a better pipeline.</h3><p>Tell us where your current response process breaks. We will show you the workflow.</p><form class="form" id="trialForm"><label>Your name<input name="name" required placeholder="e.g. David Okafor"></label><label>Company name<input name="company" required placeholder="e.g. Havenstone Properties"></label><div class="row"><label>WhatsApp number<input name="phone" required placeholder="+234..."></label><label>Weekly enquiries<select name="enquiries" required><option value="">Select</option><option>0–10</option><option>11–30</option><option>31–100</option><option>100+</option></select></label></div><label>What is the biggest problem?<textarea name="problem" required rows="3" placeholder="e.g. We reply late after office hours..."></textarea></label><button class="btn gold" type="submit">Apply for the 3-day trial ↗</button><small class="fine">No spam. We only use this to review your fit and prepare the WhatsApp conversation.</small></form></div></div></section>
-    <section class="pricing"><div class="wrap"><div class="pricebox"><div><div class="eyebrow">The managed service</div><h2>A lead desk, not another software login.</h2><p>FrontDesk AI stays close to the information, conversations, and handoffs that make the system useful month after month.</p><a class="btn gold" href="#trial">Start with the 3-day trial →</a></div><div class="price-side"><div class="price">₦50,000 <small>/ month</small></div><ul><li><b>✓</b> 24/7 first response</li><li><b>✓</b> Approved listing and FAQ information</li><li><b>✓</b> Lead qualification and capture</li><li><b>✓</b> Agent notifications and human handoff</li><li><b>✓</b> Listing updates and monthly reporting</li></ul></div></div><div class="boundary">◈ The service does not guarantee a sale. It makes sure more enquiries receive a fast response and reach your agents in a usable form.</div></div></section>
-    <section id="faq" class="faq"><div class="wrap faq-grid"><div class="faq-intro"><div class="eyebrow" style="color:#89682e">Clear answers</div><h2>Questions an owner should ask before saying yes.</h2><p>No inflated promises. No mystery. Just a clear operating workflow for your enquiry channel.</p><a class="text-link" style="color:#89682e" href="#trial">Apply for the 3-day trial →</a></div><div class="faq-list"><div class="faq-item open"><button>Does FrontDesk AI replace our agents? <span>⌄</span></button><div class="answer"><p>No. It handles the first response, repetitive questions, information capture, and routing. Your agents handle negotiations, inspections, offers, and relationship-building.</p></div></div><div class="faq-item"><button>Can it respond at night? <span>⌄</span></button><div class="answer"><p>The service is designed to provide a first response 24/7 for supported enquiries. Human support and agent handoff depend on the response process your company approves.</p></div></div><div class="faq-item"><button>Will it invent property prices or availability? <span>⌄</span></button><div class="answer"><p>It should only use information supplied and approved by your company. When information is missing or uncertain, it routes the question to a human instead of guessing.</p></div></div><div class="faq-item"><button>Can it book an inspection? <span>⌄</span></button><div class="answer"><p>It can collect the property, preferred date, preferred time, and contact details. The agent or company must confirm the actual inspection time.</p></div></div><div class="faq-item"><button>How does the 3-day live trial work? <span>⌄</span></button><div class="answer"><p>Day one is setup and approval. Day two is testing and launch. Day three is a real conversation review and results report. You then decide whether the managed monthly service makes sense.</p></div></div></div></div></section>
-    <section class="final"><div class="wrap final-grid"><div><div class="eyebrow">The next enquiry</div><h2>Your next property lead may arrive after your team goes offline.</h2><p>Give that enquiry a fast first response and a clear path to your agents.</p></div><a class="btn gold large" href="#trial">Apply for the trial ↗</a></div></section>
-  </main>
-  <footer class="footer"><div class="wrap footer-main"><div class="brand"><span>FrontDesk <em>AI</em></span></div><p>A managed WhatsApp lead desk for Nigerian real-estate teams.</p></div><div class="wrap footer-bottom"><span>© 2026 FrontDesk AI. Lagos, Nigeria.</span><span>Real conversations. Real growth.</span></div></footer>
-  <a class="whatsapp-mobile" href="#trial">◌ &nbsp; Chat on WhatsApp</a>
-  <script>
-    const WHATSAPP_NUMBER = '2349059144435';
-    const DEMO_TEXT = 'Hello FrontDesk AI, I want to watch the WhatsApp lead desk demo.';
-    const demoLink = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(DEMO_TEXT);
-    document.querySelectorAll('a[href="#demo"]').forEach(link => link.href = demoLink);
-    document.getElementById('menu').addEventListener('click', () => alert('Use the page links below the header on mobile.'));
-    document.querySelectorAll('.faq-item button').forEach(button => button.addEventListener('click', () => button.parentElement.classList.toggle('open')));
-    document.getElementById('trialForm').addEventListener('submit', function(event){
-      event.preventDefault();
-      const data = new FormData(event.target);
-      const message = 'Hello FrontDesk AI, I want to apply for the 3-day live trial.\n\nName: ' + data.get('name') + '\nCompany: ' + data.get('company') + '\nWhatsApp: ' + data.get('phone') + '\nWeekly enquiries: ' + data.get('enquiries') + '\nBiggest problem: ' + data.get('problem');
-      window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
+
+<header id="site-header">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top">FrontDesk <em>AI</em></a>
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#ng">For real estate</a>
+        <a href="#trial">Trial</a>
+        <a href="#faq">FAQs</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="#trial">See the Demo</a>
+      </div>
+      <div class="burger" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')"><span></span><span></span><span></span></div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">FrontDesk AI</span>
+      <h1>Never miss a property lead again.</h1>
+      <p class="lead">A 24/7 receptionist for Nigerian real-estate teams — answering property enquiries, qualifying serious prospects, and giving your agents ready-to-follow-up lead summaries.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#how">See How It Works <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#trial">View Demo</a>
+      </div>
+      <p class="hero-trust"><b>Works</b> while your team is busy, offline, or asleep.</p>
+    </div>
+
+    <div class="phone">
+      <div class="phone-head">
+        <div class="phone-avatar">FD</div>
+        <div>
+          <div class="name">Property Enquiry</div>
+          <div class="status"><span class="dot"></span>online</div>
+        </div>
+      </div>
+      <div class="bubble them">Hi, is the 4-bedroom house in Lekki still available?</div>
+      <div class="bubble us">Yes, it's currently available. Are you looking to buy for yourself or as an investment?</div>
+      <div class="bubble them">I'm interested in buying.</div>
+      <div class="lead-card">
+        <div class="tag">Lead Captured</div>
+        <div class="row"><span>Name</span><span>Chidinma O.</span></div>
+        <div class="row"><span>Property</span><span>4-bed, Lekki</span></div>
+        <div class="row"><span>Budget</span><span>₦80m</span></div>
+        <div class="row"><span>Intent</span><span>Buying</span></div>
+        <div class="status-pill">Ready for agent follow-up</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">The leak in the pipeline</span>
+      <h2>Your next property lead could arrive when nobody is watching.</h2>
+      <p>Enquiries don't wait for office hours — and neither should the first response.</p>
+    </div>
+    <div class="problem-list stagger">
+      <div class="problem-item reveal"><div class="time">11:47 PM</div><p>A buyer enquires about a property.</p></div>
+      <div class="problem-item reveal"><div class="time">Saturday afternoon</div><p>An agent is unavailable.</p></div>
+      <div class="problem-item reveal"><div class="time">Mid-inspection</div><p>Messages keep arriving. The prospect waits.</p></div>
+    </div>
+    <p class="problem-note reveal">FrontDesk AI responds immediately instead of leaving the prospect waiting.</p>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">From enquiry to qualified lead</span>
+      <h2>One conversation. A clean handoff.</h2>
+    </div>
+    <div class="steps stagger">
+      <div class="step reveal"><div class="num">01 — Connect</div><h3>Add your property information</h3><p>Listings, prices, locations and FAQs your team already approves.</p></div>
+      <div class="step reveal"><div class="num">02 — Respond</div><h3>FrontDesk AI handles incoming enquiries</h3><p>Fast first replies, day or night, on WhatsApp.</p></div>
+      <div class="step reveal"><div class="num">03 — Qualify</div><h3>Prospects are qualified automatically</h3><p>Budget, location, timeline and intent, captured in the conversation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">What it handles</span>
+      <h2>One WhatsApp conversation. Real business outcomes.</h2>
+      <p>Not another dashboard to learn — a managed lead desk that handles the front of the conversation.</p>
+    </div>
+    <div class="feature-grid stagger">
+      <div class="feature-card reveal"><div class="feature-icon">◐</div><h3>Answers property questions</h3><p>Handles common questions about listings, pricing, locations and availability you've provided.</p></div>
+      <div class="feature-card reveal"><div class="feature-icon">◎</div><h3>Qualifies prospects</h3><p>Finds out what the prospect actually wants instead of sending your agent another vague "I'm interested."</p></div>
+      <div class="feature-card reveal"><div class="feature-icon">◉</div><h3>Captures lead information</h3><p>Collects the details your agent needs to follow up, not just a name and a "hello."</p></div>
+      <div class="feature-card reveal"><div class="feature-icon">☾</div><h3>Works 24/7</h3><p>Handles enquiries when your team is busy, offline, or asleep.</p></div>
+      <div class="feature-card reveal"><div class="feature-icon">▤</div><h3>Sends agent-ready summaries</h3><p>Turns a loose conversation into a concise lead your team can act on.</p></div>
+      <div class="feature-card reveal"><div class="feature-icon">⌁</div><h3>Keeps the conversation moving</h3><p>Responds instantly instead of making prospects wait for a reply.</p></div>
+    </div>
+    <div class="safe-note reveal"><b>Safe by design.</b> When information is missing or uncertain, FrontDesk AI routes the question to a human instead of guessing.</div>
+  </div>
+</section>
+
+<section id="ng" class="ng-section">
+  <div class="wrap ng-grid">
+    <div class="reveal">
+      <span class="section-label">Built for real estate</span>
+      <h2 style="font-size:clamp(26px,3.6vw,36px); margin-bottom:14px;">Built around how Nigerian real-estate teams actually work.</h2>
+      <p style="color:var(--text-dim); font-size:15.5px; line-height:1.7;">Most enquiries start on WhatsApp, not a contact form. FrontDesk AI is built around that reality — not a generic chatbot bolted onto a website.</p>
+    </div>
+    <ul class="ng-list reveal">
+      <li><b>WhatsApp-driven enquiries</b> Where your buyers already are.</li>
+      <li><b>Listings & pricing</b> Answers questions your team has already approved.</li>
+      <li><b>Inspection requests</b> Collects property, date and time for confirmation.</li>
+      <li><b>Buyer qualification</b> Budget, timeline and intent, captured up front.</li>
+      <li><b>Agent handoff</b> Complex questions and negotiations go to a human.</li>
+      <li><b>After-hours enquiries</b> Covered the same as office hours.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="lead-summary">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">The after-hours moment</span>
+      <h2>When the prospect messages at 11:48 p.m.</h2>
+      <p>The difference isn't a flashy bot — it's the gap between a prospect waiting until morning and a clean opportunity landing in your agent's queue right now.</p>
+    </div>
+    <div class="agent-card reveal">
+      <div class="tag">New Property Lead</div>
+      <h3>Sarah</h3>
+      <div class="sub">Interested in: 4-Bedroom Duplex — Ikoyi</div>
+      <div class="field"><span>Budget</span><span>₦120m</span></div>
+      <div class="field"><span>Purpose</span><span>Personal residence</span></div>
+      <div class="field"><span>Timeline</span><span>Inspection this weekend</span></div>
+      <div class="field"><span>Questions asked</span><span>Title documents</span></div>
+      <div class="final-status">Ready for follow-up</div>
+    </div>
+  </div>
+</section>
+
+<section id="trial">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">The low-risk start</span>
+      <h2>Test the workflow in 3 days.</h2>
+      <p>We configure a focused WhatsApp lead desk around your approved listings and enquiry process — you see real conversations and results before deciding on the monthly service.</p>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="price">₦50,000 <span>/ month, after the trial</span></div>
+      <ul>
+        <li>24/7 first response</li>
+        <li>Approved listing and FAQ information</li>
+        <li>Lead qualification and capture</li>
+        <li>Agent notifications and human handoff</li>
+        <li>Listing updates and monthly reporting</li>
+      </ul>
+      <a class="btn btn-primary" href="#faq" style="margin-top:24px;">Apply for the 3-day trial <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="max-width:760px;">
+    <div class="section-head reveal">
+      <span class="section-label">Clear answers</span>
+      <h2>Questions an owner should ask before saying yes.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Does FrontDesk AI replace our agents?</span><span class="plus">+</span></div>
+        <div class="faq-a"><p>No. It handles the first response, repetitive questions, information capture, and routing. Your agents handle negotiations, inspections, offers, and relationship-building.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Will it invent property prices or availability?</span><span class="plus">+</span></div>
+        <div class="faq-a"><p>No. It only uses information supplied and approved by your company. When something is missing or uncertain, it routes the question to a human instead of guessing.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Can it book an inspection?</span><span class="plus">+</span></div>
+        <div class="faq-a"><p>It collects the property, preferred date, preferred time, and contact details. Your agent or company confirms the actual inspection time.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>How does the 3-day live trial work?</span><span class="plus">+</span></div>
+        <div class="faq-a"><p>Day one is setup and approval. Day two is testing and launch. Day three is a real conversation review and results report.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap">
+    <span class="eyebrow reveal">Ready when you are</span>
+    <h2 class="reveal">Stop letting after-hours enquiries become missed opportunities.</h2>
+    <p class="reveal">Let FrontDesk AI handle the first conversation while your agents focus on serious prospects.</p>
+    <div class="cta-ctas reveal">
+      <a class="btn btn-primary" href="#trial">See FrontDesk AI in Action <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" href="#trial">Talk to Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>FrontDesk <em style="color:var(--gold); font-style:normal;">AI</em> — A managed WhatsApp lead desk for Nigerian real-estate teams.</div>
+    <div>© 2026 FrontDesk AI. Lagos, Nigeria.</div>
+  </div>
+</footer>
+
+<script>
+// Sticky header shrink
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Scroll reveal
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (prefersReduced) {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+} else {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
     });
-  </script>
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+
+// FAQ accordion
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const answer = item.querySelector('.faq-a');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(o => {
+    o.classList.remove('open');
+    o.querySelector('.faq-a').style.maxHeight = null;
+  });
+  if (!wasOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+</script>
 </body>
-</html>
+  </html>
